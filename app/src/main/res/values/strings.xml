@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Schedule</string>
+    <string name="error_no_file">NO space</string>
+    <string name="error_not_file">NO File</string>
 </resources>
