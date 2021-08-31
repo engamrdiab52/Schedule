@@ -13,7 +13,6 @@ object ScheduleViewModelFactory : ViewModelProvider.Factory {
         ScheduleViewModelFactory.dependencies = dependencies
     }
 
-
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (ScheduleViewModel::class.java.isAssignableFrom(modelClass)) {
             return modelClass.getConstructor(Application::class.java, Interacts::class.java)

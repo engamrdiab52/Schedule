@@ -8,12 +8,12 @@ import kotlinx.coroutines.tasks.await
 import java.io.File
 
 class FirebaseLectureDownload(
-    private val lecturesReference: StorageReference,
+    private val lecturesReference: StorageReference?,
     private val localPrivateFile: File?
 ) : IFirebaseLectureDownload {
 
     override suspend fun downloadLecturesFromFirebase(): File? {
-        return if (localPrivateFile != null) {
+        return if (localPrivateFile != null && lecturesReference != null) {
             try {
                 lecturesReference.getFile(localPrivateFile).await()
                 localPrivateFile
@@ -21,7 +21,6 @@ class FirebaseLectureDownload(
                 Log.d(TAG, e.message.toString())
                 null
             }
-
         } else {
             null
         }
