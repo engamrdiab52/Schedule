@@ -1,4 +1,4 @@
-package com.afdal.schedule
+package com.afdal.schedule.presentation
 
 import androidx.annotation.StringRes
 

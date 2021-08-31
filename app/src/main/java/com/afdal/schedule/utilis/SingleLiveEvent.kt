@@ -1,4 +1,4 @@
-package com.afdal.schedule
+package com.afdal.schedule.utilis
 
 import android.util.Log
 import androidx.annotation.MainThread

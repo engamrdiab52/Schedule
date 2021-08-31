@@ -1,4 +1,4 @@
-package com.afdal.schedule
+package com.afdal.core.domain
 
 data class Address(
     val country : String = "UNKNOWN",

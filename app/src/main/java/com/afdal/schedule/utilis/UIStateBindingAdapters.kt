@@ -1,9 +1,11 @@
-package com.afdal.schedule
+package com.afdal.schedule.utilis
 
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.afdal.schedule.presentation.*
+
 const val EMPTY_STRING = ""
 @BindingAdapter("uiState")
 fun setUiStateForLoading(progressView: ProgressBar, uiState: UIState) {
