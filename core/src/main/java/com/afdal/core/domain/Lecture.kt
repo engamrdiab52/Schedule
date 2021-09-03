@@ -1,7 +1,6 @@
 package com.afdal.core.domain
 
 data class Lecture(
-    val id: String = "",
     val indexOfLectureInTerm: Long = 0L,
     val codeOfCourseInUniversity : Long = 0L,
     val nameOfCourse : String = "",

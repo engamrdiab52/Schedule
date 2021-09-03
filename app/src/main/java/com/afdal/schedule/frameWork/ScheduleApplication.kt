@@ -3,7 +3,7 @@ package com.afdal.schedule.frameWork
 import android.app.Application
 import com.afdal.core.data.RepositoryGsonParser
 import com.afdal.core.data.RepositoryLectureFirebase
-import com.afdal.core.domain.Person
+import com.afdal.core.domain.Lecture
 import com.afdal.core.useCases.DownloadLectures
 import com.afdal.core.useCases.ExtractPersonsList
 import com.google.firebase.storage.FirebaseStorage
@@ -23,23 +23,25 @@ class ScheduleApplication : Application() {
                 null
             }
 
-        val lectureReference : StorageReference? =
+        val lectureReference: StorageReference? =
             try {
-                FirebaseStorage.getInstance().reference.child("lecture").child("myData.json")
-            }catch (e :Exception){
+                FirebaseStorage.getInstance().reference.child("classes/country/city/university/faculty/major/academicYear/schedule1.json")
+
+            } catch (e: Exception) {
                 null
             }
         val gson = Gson()
-        val listPersonType :Type = object :TypeToken<List<Person>>(){}.type
+        val listPersonType: Type = object : TypeToken<List<Lecture>>() {}.type
 
-        val repositoryGsonParser  = RepositoryGsonParser(GsonParserImpl(gson, listPersonType))
+        val repositoryGsonParser = RepositoryGsonParser(GsonParserImpl(gson, listPersonType))
 
         val repositoryLectureFirebase =
             RepositoryLectureFirebase(FirebaseLectureDownload(lectureReference, localPrivateFile))
         ScheduleViewModelFactory.inject(
             this,
-            Interacts(DownloadLectures(repositoryLectureFirebase),
-            ExtractPersonsList(repositoryGsonParser)
+            Interacts(
+                DownloadLectures(repositoryLectureFirebase),
+                ExtractPersonsList(repositoryGsonParser)
             )
         )
     }
