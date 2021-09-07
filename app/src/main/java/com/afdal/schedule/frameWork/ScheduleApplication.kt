@@ -1,6 +1,7 @@
 package com.afdal.schedule.frameWork
 
 import android.app.Application
+import com.afdal.core.data.IPreferenceHelper
 import com.afdal.core.data.RepositoryGsonParser
 import com.afdal.core.data.RepositoryLectureFirebase
 import com.afdal.core.domain.Lecture
@@ -16,6 +17,7 @@ import java.lang.reflect.Type
 class ScheduleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        val prefrences  :IPreferenceHelper = PreferenceManager(this)
         val localPrivateFile: File? =
             try {
                 File(this.applicationContext.filesDir, "myData.json")
@@ -36,7 +38,7 @@ class ScheduleApplication : Application() {
         val repositoryGsonParser = RepositoryGsonParser(GsonParserImpl(gson, listPersonType))
 
         val repositoryLectureFirebase =
-            RepositoryLectureFirebase(FirebaseLectureDownload(lectureReference, localPrivateFile))
+            RepositoryLectureFirebase(FirebaseLectureDownload(lectureReference, localPrivateFile, prefrences))
         ScheduleViewModelFactory.inject(
             this,
             Interacts(
