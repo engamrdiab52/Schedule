@@ -1,4 +1,4 @@
-package com.afdal.schedule.frameWork
+package com.afdal.schedule.frameWork.remote
 
 import android.util.Log
 import com.afdal.core.data.IFirebaseLectureDownload

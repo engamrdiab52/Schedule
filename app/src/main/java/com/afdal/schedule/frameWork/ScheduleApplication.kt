@@ -5,8 +5,12 @@ import com.afdal.core.data.IPreferenceHelper
 import com.afdal.core.data.RepositoryGsonParser
 import com.afdal.core.data.RepositoryLectureFirebase
 import com.afdal.core.domain.Lecture
+import com.afdal.core.domain.LectureRemote
+import com.afdal.core.domain.LectureUi
 import com.afdal.core.useCases.DownloadLectures
 import com.afdal.core.useCases.ExtractPersonsList
+import com.afdal.schedule.frameWork.remote.FirebaseLectureDownload
+import com.afdal.schedule.frameWork.remote.GsonParserImpl
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.gson.Gson
@@ -33,7 +37,7 @@ class ScheduleApplication : Application() {
                 null
             }
         val gson = Gson()
-        val listPersonType: Type = object : TypeToken<List<Lecture>>() {}.type
+        val listPersonType: Type = object : TypeToken<List<LectureRemote>>() {}.type
 
         val repositoryGsonParser = RepositoryGsonParser(GsonParserImpl(gson, listPersonType))
 

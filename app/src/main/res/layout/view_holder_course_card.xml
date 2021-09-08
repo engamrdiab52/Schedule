@@ -7,7 +7,7 @@
 
         <variable
             name="lecture"
-            type="com.afdal.core.domain.Lecture" />
+            type="com.afdal.core.domain.LectureUi" />
       <!--  <variable
             name="course_click_listner"
             type="com.afdal.pua_2.ui.schedual.CourseCardListener" />-->
