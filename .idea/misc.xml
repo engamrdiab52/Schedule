@@ -6,12 +6,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/engam/StudioProjects/Schedule/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/engam/StudioProjects/Schedule/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
         <entry key="..\:/Users/engam/StudioProjects/Schedule/app/src/main/res/drawable/ic_more.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/engam/StudioProjects/Schedule/app/src/main/res/layout/activity_main.xml" value="0.19021739130434784" />
         <entry key="..\:/Users/engam/StudioProjects/Schedule/app/src/main/res/layout/course_card.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/engam/StudioProjects/Schedule/app/src/main/res/layout/fragment_lectures.xml" value="0.13802083333333334" />
-        <entry key="..\:/Users/engam/StudioProjects/Schedule/app/src/main/res/layout/view_holder_course_card.xml" value="0.19021739130434784" />
+        <entry key="..\:/Users/engam/StudioProjects/Schedule/app/src/main/res/layout/view_holder_course_card.xml" value="0.4" />
       </map>
     </option>
   </component>
