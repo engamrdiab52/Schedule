@@ -41,9 +41,9 @@ class LecturesFragment : Fragment() {
                     .show()
             } else {
                 lecturesControllerEpoxy.setData(it)
-                val jsonString: String = it.toString()
+           //     val jsonString: String = it.toString()
               //  Toast.makeText(requireContext(), jsonString, Toast.LENGTH_SHORT).show()
-                Log.d(TAG, "DONE : : : : $jsonString")
+              //  Log.d(TAG, "DONE : : : : $jsonString")
             }
         })
         viewModel.loadLectures()

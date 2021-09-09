@@ -4,11 +4,16 @@ import android.app.Application
 import com.afdal.core.data.IPreferenceHelper
 import com.afdal.core.data.RepositoryGsonParser
 import com.afdal.core.data.RepositoryLectureFirebase
+import com.afdal.core.data.RepositoryLocalSource
 import com.afdal.core.domain.Lecture
 import com.afdal.core.domain.LectureRemote
 import com.afdal.core.domain.LectureUi
 import com.afdal.core.useCases.DownloadLectures
 import com.afdal.core.useCases.ExtractPersonsList
+import com.afdal.core.useCases.RetrieveFromDatabase
+import com.afdal.core.useCases.SaveInDatabase
+import com.afdal.schedule.frameWork.local.LocalDataSource
+import com.afdal.schedule.frameWork.local.ScheduleDatabase
 import com.afdal.schedule.frameWork.remote.FirebaseLectureDownload
 import com.afdal.schedule.frameWork.remote.GsonParserImpl
 import com.google.firebase.storage.FirebaseStorage
@@ -19,9 +24,13 @@ import java.io.File
 import java.lang.reflect.Type
 
 class ScheduleApplication : Application() {
+    companion object{
+        var isDownloadLectures : Boolean = false
+    }
+
     override fun onCreate() {
         super.onCreate()
-        val prefrences  :IPreferenceHelper = PreferenceManager(this)
+        val prefrences: IPreferenceHelper = PreferenceManager(this)
         val localPrivateFile: File? =
             try {
                 File(this.applicationContext.filesDir, "myData.json")
@@ -42,12 +51,23 @@ class ScheduleApplication : Application() {
         val repositoryGsonParser = RepositoryGsonParser(GsonParserImpl(gson, listPersonType))
 
         val repositoryLectureFirebase =
-            RepositoryLectureFirebase(FirebaseLectureDownload(lectureReference, localPrivateFile, prefrences))
+            RepositoryLectureFirebase(
+                FirebaseLectureDownload(
+                    lectureReference,
+                    localPrivateFile,
+                    prefrences
+                )
+            )
+
+        val localDataSource  = LocalDataSource(this)
+        val repositoryLocalSource  =  RepositoryLocalSource(localDataSource)
         ScheduleViewModelFactory.inject(
             this,
             Interacts(
                 DownloadLectures(repositoryLectureFirebase),
-                ExtractPersonsList(repositoryGsonParser)
+                ExtractPersonsList(repositoryGsonParser),
+                SaveInDatabase(repositoryLocalSource),
+                RetrieveFromDatabase(repositoryLocalSource)
             )
         )
     }

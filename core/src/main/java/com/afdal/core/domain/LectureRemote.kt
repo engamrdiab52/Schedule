@@ -34,4 +34,22 @@ fun LecturesRemoteContainer.asLecturesLocalContainer(): LectureLocalListContaine
         }
     )
 }
+fun LecturesRemoteContainer.asLecturesUiContainer(): LecturesUiContainer {
+    return LecturesUiContainer(
+        lecturesRemote.map {
+            LectureUi(
+                indexOfLectureInTerm = it.indexOfLectureInTerm.toString(),
+                codeOfCourseInUniversity = it.codeOfCourseInUniversity.toString(),
+                nameOfCourse = it.nameOfCourse,
+                lineOfLecture = it.lineOfLecture,
+                placeOfLecture = it.placeOfLecture,
+                timeOfLecture = it.timeOfLecture,
+                orderOfLecture = it.orderOfLecture.toString(),
+                noOfLecturesInCourse = it.noOfLecturesInCourse.toString(),
+                nameOfTeacher = it.nameOfTeacher,
+                urlTeacherImage = it.urlTeacherImage
 
+            )
+        }
+    )
+}
