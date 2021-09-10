@@ -15,14 +15,10 @@ import kotlinx.coroutines.launch
 
 class LecturesViewModel(application: Application, interacts: Interacts) :
     ScheduleViewModel(application, interacts) {
-/*init {
-    loadLectures()
-}*/
     private var personListMutableLiveData = SingleLiveEvent<List<LectureUi>?>()
     val personListLiveData: LiveData<List<LectureUi>?> get() = personListMutableLiveData
     fun loadLectures() {
         viewModelScope.launch(Dispatchers.IO) {
-
             try {
                 val file = interacts.downloadLectures()
                 if (isDownloadLectures) {
@@ -38,10 +34,12 @@ class LecturesViewModel(application: Application, interacts: Interacts) :
                 }
                 //retrieve from db
                 val list: List<LectureLocal>? = interacts.retrieveFromDatabase()
-                Log.d(TAG, "RETRIEVING FROM DATABASE***********")
                 val uiList =
                     list?.let { LectureLocalListContainer(it).asLecturesUiContainer().lecturesUi }
-               // Log.d(TAG, "uiList : :" + uiList.toString())
+
+                if (uiList.isNullOrEmpty()) {
+                    Log.d(TAG, "NO DATA CHECK NETWORK CONNECTION")
+                }
                 personListMutableLiveData.postValue(uiList)
             } catch (e: Exception) {
                 Log.d(TAG, "?>?>>?>?>?>?>?>" + e.message.toString())

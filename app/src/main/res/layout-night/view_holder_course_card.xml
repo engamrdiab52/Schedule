@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="lecture"
+            type="com.afdal.core.domain.LectureUi" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+android:theme="@style/Theme.Design.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardBackgroundColor="#FCFCFC"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:contentPadding="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--  <ImageView
+                  android:id="@+id/img_face"
+                  android:layout_width="48dp"
+                  android:layout_height="48dp"
+                  android:layout_marginStart="32dp"
+                  android:layout_marginTop="16dp"
+                  android:layout_marginEnd="25dp"
+                  android:scaleType="centerCrop"
+                  android:visibility="gone"
+                  app:layout_constraintEnd_toStartOf="@+id/course_name"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  tools:srcCompat="@tools:sample/avatars" />-->
+
+            <TextView
+                android:id="@+id/course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{lecture.nameOfCourse}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Course Name" />
+
+            <TextView
+                android:id="@+id/lecture_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.Design.Light"
+                android:text="@{lecture.orderOfLecture}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="10/24" />
+
+            <TextView
+                android:id="@+id/course_lecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{lecture.nameOfTeacher}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/course_name"
+                tools:text="Lecturer Name" />
+
+            <TextView
+                android:id="@+id/lecture_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{lecture.nameOfCourse}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/course_lecturer"
+                tools:text="the Russian Federation Executive" />
+
+            <TextView
+                android:id="@+id/lecture_brief"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{lecture.lineOfLecture}"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/lecture_name"
+                tools:text="Office on Drugs and Crime (UNODC) and...." />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="0dp" />
+
+            <TextView
+                android:id="@+id/lecture_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{lecture.placeOfLecture}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/lecture_brief"
+                tools:text="Lecture Place" />
+
+            <TextView
+                android:id="@+id/lecture_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{lecture.timeOfLecture}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lecture_brief"
+                tools:text="12:00 PM" />
+
+            <!--   <ImageView
+                   android:id="@+id/card_more_button"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:clickable="true"
+                   android:focusable="true"
+                   android:visibility="gone"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toStartOf="@+id/lecture_brief"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/img_face"
+                   app:srcCompat="@drawable/ic_more" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

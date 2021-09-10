@@ -16,6 +16,6 @@ interface LectureDao {
     suspend fun clear()
 
     @Query("SELECT * FROM lectures_table ORDER BY lecture_id DESC")
-    fun getAllLectures():List<LectureEntity>
+    fun getAllLectures():List<LectureEntity>?
 
 }

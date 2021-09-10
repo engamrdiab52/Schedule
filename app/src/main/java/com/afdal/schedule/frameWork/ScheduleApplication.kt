@@ -1,6 +1,7 @@
 package com.afdal.schedule.frameWork
 
 import android.app.Application
+import android.util.Log
 import com.afdal.core.data.IPreferenceHelper
 import com.afdal.core.data.RepositoryGsonParser
 import com.afdal.core.data.RepositoryLectureFirebase
@@ -12,6 +13,7 @@ import com.afdal.core.useCases.DownloadLectures
 import com.afdal.core.useCases.ExtractPersonsList
 import com.afdal.core.useCases.RetrieveFromDatabase
 import com.afdal.core.useCases.SaveInDatabase
+import com.afdal.schedule.MainActivity
 import com.afdal.schedule.frameWork.local.LocalDataSource
 import com.afdal.schedule.frameWork.local.ScheduleDatabase
 import com.afdal.schedule.frameWork.remote.FirebaseLectureDownload
@@ -40,11 +42,11 @@ class ScheduleApplication : Application() {
 
         val lectureReference: StorageReference? =
             try {
-                FirebaseStorage.getInstance().reference.child("classes/country/city/university/faculty/major/academicYear/schedule1.json")
-
+                FirebaseStorage.getInstance().reference.child("classes/country/city/university/faculty/major/academicYear/schedule2.json")
             } catch (e: Exception) {
                 null
             }
+
         val gson = Gson()
         val listPersonType: Type = object : TypeToken<List<LectureRemote>>() {}.type
 
@@ -55,7 +57,8 @@ class ScheduleApplication : Application() {
                 FirebaseLectureDownload(
                     lectureReference,
                     localPrivateFile,
-                    prefrences
+                    prefrences,
+                    this
                 )
             )
 
